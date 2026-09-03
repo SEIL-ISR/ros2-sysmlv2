@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SEIL-ISR/ros2-sysmlv2/main/assets/ros2-sysmlv2-logo.svg" alt="ros2-sysmlv2: a SysML v2 domain library for ROS2" width="720">
+  <img src="https://raw.githubusercontent.com/SEIL-ISR/ros2-sysmlv2/main/assets/ros2-sysmlv2-logo.svg" alt="" width="720">
 </p>
 
 # ros2-sysmlv2
@@ -20,7 +20,7 @@ Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Na
 
 ## A series of libraries
 
-This is the first of a planned series of SysML v2 libraries for robotics from the same lab. It covers architecture and implementation: the ROS2 vocabulary a robot's software architecture is written against. Two companions are planned, a library for analysis, holding the model elements for design space exploration of robot architectures, and a library for verification, holding the elements for verifying them. Each will be published on the sysand index under the same organization.
+This is the first of a planned series of SysML v2 libraries for robotics. It covers architecture and implementation: the ROS2 vocabulary a robot's software architecture is written against. Two companions are planned, a library for analysis, holding the model elements for design space exploration of robot architectures, and a library for verification, holding the elements for verifying them. Each will be published on the sysand index under the same organization.
 
 ## Installation
 

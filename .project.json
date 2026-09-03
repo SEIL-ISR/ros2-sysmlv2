@@ -2,7 +2,7 @@
   "name": "ros2-sysmlv2",
   "publisher": "seil-isr",
   "description": "SysML v2 domain library for ROS2 robotics system architectures",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "maintainer": [
     "Sai Sandeep Damera <sdamera@terpmail.umd.edu>"

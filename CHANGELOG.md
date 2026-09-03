@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 (2026-09-03)
+
+- README only: definition counts taken from the model (182), a Nav2 stack-coverage section, the local archive name as `sysand build` writes it, the series note reworded, and a logo that collapses cleanly where the index page blocks external images.
+- No change to the library sources.
+
 ## 0.1.0 (2026-09-03)
 
 First public release, alpha quality: the vocabulary is complete and validated, and its shape may still change before 1.0.
