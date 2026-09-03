@@ -68,7 +68,6 @@ while IFS= read -r p; do
 done <<'PATS'
 (^|[^A-Za-z0-9])W[0-9][0-9]([^A-Za-z0-9]|$)
 E7 qos_policies
-2026-[0-9]{2}-[0-9]{2}
 /Users/
 /home/
 /mnt/
@@ -82,6 +81,11 @@ Anthropic
 github\.com/sdamera/
 sdamera95/Architecture
 PATS
+
+# ------------------------------------------------------------------
+# CHANGELOG.md carries release dates, so the internal-date pattern skips it
+nodate_files=$(echo "$files" | tr ' ' '\n' | grep -v '^CHANGELOG.md$' | tr '\n' ' ')
+scan_one "" '2026-[0-9]{2}-[0-9]{2}' "$nodate_files"
 
 # ------------------------------------------------------------------
 # .meta.json carries a legitimate created timestamp, so only paths are checked
