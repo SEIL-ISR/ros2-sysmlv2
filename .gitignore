@@ -1,0 +1,17 @@
+# Allowlist. Everything is ignored unless named here, so nothing but the library can be committed.
+*
+!/.gitignore
+!/.project.json
+!/.meta.json
+!/README.md
+!/CHANGELOG.md
+!/LICENSES/
+!/LICENSES/*.txt
+!/ros2_sysmlv2/
+!/ros2_sysmlv2/*.sysml
+!/scripts/
+!/scripts/check_clean.sh
+!/scripts/expected_kpar_files.txt
+!/.github/
+!/.github/workflows/
+!/.github/workflows/release.yaml

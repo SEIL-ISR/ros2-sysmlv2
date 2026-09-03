@@ -1,0 +1,66 @@
+# This is a GitHub workflow, defining a set of jobs each with a set of steps.
+#
+# The workflow will run when a git tag like v1.2.3 is pushed, and publish a
+# release to the chosen sysand index using trusted publishing.
+#
+# trusted publishing reference:  https://docs.sysand.com/index/how-to/set-up-trusted-publishing/
+# workflow config reference:     https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+# installation script reference: https://docs.sysand.com/client/getting-started/installation/#installation-script
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+env:
+  SYSAND_INDEX_URL: https://sysand.com
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install sysand
+        run: |
+          curl -fsSL https://sysand.com/install.sh | SYSAND_VERSION=0.2.1 sh
+
+      - name: Check version in git tag matches the project's declared version
+        run: |
+          PROJECT_VERSION="$(sysand info version)"
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$PROJECT_VERSION" != "$TAG_VERSION" ]; then
+            echo "Project version ${PROJECT_VERSION} does not match tag ${GITHUB_REF_NAME}"
+            exit 1
+          fi
+
+      - name: Check no internal references survive in the published text
+        run: sh scripts/check_clean.sh
+
+      - name: Check the built kpar contains exactly the expected files
+        run: |
+          sysand build /tmp/check.kpar
+          unzip -Z1 /tmp/check.kpar | sort > /tmp/actual_kpar_files.txt
+          diff -u scripts/expected_kpar_files.txt /tmp/actual_kpar_files.txt
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [test]
+    environment: sysand
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install sysand
+        run: |
+          curl -fsSL https://sysand.com/install.sh | SYSAND_VERSION=0.2.1 sh
+
+      - name: Build and publish a project to the index
+        run: |
+          sysand build
+          sysand publish --index "${SYSAND_INDEX_URL}"

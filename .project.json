@@ -1,0 +1,19 @@
+{
+  "name": "ros2-sysmlv2",
+  "publisher": "seil-isr",
+  "description": "SysML v2 domain library for ROS2 robotics system architectures",
+  "version": "0.1.0-alpha",
+  "license": "Apache-2.0",
+  "maintainer": [
+    "Sai Sandeep Damera <sdamera@terpmail.umd.edu>"
+  ],
+  "website": "https://github.com/SEIL-ISR/ros2-sysmlv2",
+  "topic": [
+    "robotics",
+    "ros2",
+    "navigation",
+    "autonomous-systems",
+    "mbse"
+  ],
+  "usage": []
+}

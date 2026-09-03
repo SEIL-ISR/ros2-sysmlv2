@@ -1,0 +1,93 @@
+{
+  "index": {
+    "ros2_sysmlv2_foundation": "ros2_sysmlv2/foundation.sysml",
+    "ros2_sysmlv2_std_msgs": "ros2_sysmlv2/std_msgs.sysml",
+    "ros2_sysmlv2_geometry_msgs": "ros2_sysmlv2/geometry_msgs.sysml",
+    "ros2_sysmlv2_sensor_msgs": "ros2_sysmlv2/sensor_msgs.sysml",
+    "ros2_sysmlv2_nav_msgs": "ros2_sysmlv2/nav_msgs.sysml",
+    "ros2_sysmlv2_comm": "ros2_sysmlv2/comm.sysml",
+    "ros2_sysmlv2_lifecycle": "ros2_sysmlv2/lifecycle.sysml",
+    "ros2_sysmlv2_deployment": "ros2_sysmlv2/deployment.sysml",
+    "ros2_sysmlv2_params": "ros2_sysmlv2/params.sysml",
+    "ros2_sysmlv2_tf2": "ros2_sysmlv2/tf2.sysml",
+    "ros2_sysmlv2_archetypes": "ros2_sysmlv2/archetypes.sysml",
+    "ros2_sysmlv2_nav2": "ros2_sysmlv2/nav2.sysml",
+    "ros2_sysmlv2_trajectory_msgs": "ros2_sysmlv2/trajectory_msgs.sysml",
+    "ros2_sysmlv2_diagnostic_msgs": "ros2_sysmlv2/diagnostic_msgs.sysml",
+    "ros2_sysmlv2_shape_msgs": "ros2_sysmlv2/shape_msgs.sysml",
+    "ros2_sysmlv2_action_msgs": "ros2_sysmlv2/action_msgs.sysml",
+    "ros2_sysmlv2_visualization_msgs": "ros2_sysmlv2/visualization_msgs.sysml"
+  },
+  "created": "2026-04-09T23:05:22.916719000Z",
+  "metamodel": "https://www.omg.org/spec/SysML/20250201",
+  "checksum": {
+    "ros2_sysmlv2/foundation.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/std_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/geometry_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/sensor_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/nav_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/comm.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/lifecycle.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/deployment.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/params.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/tf2.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/archetypes.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/nav2.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/trajectory_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/diagnostic_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/shape_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/action_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    },
+    "ros2_sysmlv2/visualization_msgs.sysml": {
+      "value": "",
+      "algorithm": "NONE"
+    }
+  }
+}
