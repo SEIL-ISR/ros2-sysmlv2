@@ -60,7 +60,17 @@ jobs:
         run: |
           curl -fsSL https://sysand.com/install.sh | SYSAND_VERSION=0.2.1 sh
 
+      - name: Skip versions that are already on the index
+        id: existing
+        run: |
+          V="$(sysand info version)"
+          if curl -fsS "${SYSAND_INDEX_URL}/index/seil-isr/ros2-sysmlv2/versions.json" | grep -q "\"${V}\""; then
+            echo "version ${V} is already published; nothing to do"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build and publish a project to the index
+        if: steps.existing.outputs.skip != 'true'
         run: |
           sysand build
           sysand publish --index "${SYSAND_INDEX_URL}"
