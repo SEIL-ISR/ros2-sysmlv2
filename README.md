@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SEIL-ISR/ros2-sysmlv2/main/assets/ros2-sysmlv2-logo.svg" alt="ros2-sysmlv2: a SysML v2 domain library for ROS2" width="720">
+</p>
+
 # ros2-sysmlv2
 
 The first SysML v2 domain library for ROS2 robotics system architectures.

@@ -5,6 +5,9 @@
 !/.meta.json
 !/README.md
 !/CHANGELOG.md
+!/assets/
+!/assets/*.svg
+!/assets/*.png
 !/LICENSES/
 !/LICENSES/*.txt
 !/ros2_sysmlv2/
