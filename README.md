@@ -14,6 +14,10 @@ This library is the **type vocabulary** for modeling ROS2 systems in SysML v2. Y
 
 This library is **not** a code generator. A companion code-generation pipeline (separate project) reads models written against this vocabulary and generates buildable ROS2 packages. If you want runnable code from your SysML model, you want that pipeline; if you want the type vocabulary alone, you want this kpar.
 
+## A series of libraries
+
+This is the first of a planned series of SysML v2 libraries for robotics from the same lab. It covers architecture and implementation: the ROS2 vocabulary a robot's software architecture is written against. Two companions are planned, a library for analysis, holding the model elements for design space exploration of robot architectures, and a library for verification, holding the elements for verifying them. Each will be published on the sysand index under the same organization.
+
 ## Installation
 
 ```bash
