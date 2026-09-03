@@ -8,19 +8,19 @@ The first SysML v2 domain library for ROS2 robotics system architectures.
 
 **182 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
 
-## What this library is, and is not
+## Overview
 
 This library is the **type vocabulary** for modeling ROS2 systems in SysML v2. You import it from your own `.sysml` models to obtain typed handles on messages, topics, services, actions, nodes, lifecycle states, QoS profiles, TF frames, and parameters that map directly to ROS2 Jazzy semantics. Every definition is validated against actual ROS2 source.
 
 This library is **not** a code generator. A companion code-generation pipeline (separate project) reads models written against this vocabulary and generates buildable ROS2 packages. If you want runnable code from your SysML model, you want that pipeline; if you want the type vocabulary alone, you want this kpar.
 
-## Stack coverage
+## Nav2 support
 
-Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Nav2: the goal, feedback, and result types of its actions (NavigateToPose, FollowPath, ComputePathToPose, SmoothPath, Spin, BackUp, Wait) and its Costmap and SpeedLimit messages as `item def`s; its fourteen server nodes (planner, controller, behavior-tree navigator, behavior, smoother, costmap, AMCL, map server, velocity smoother, collision monitor, lifecycle manager, waypoint follower, docking, and route servers) as `part def`s carrying their topic names and action servers; and a `Nav2Stack` composite that wires them together, all checked against the Nav2 Jazzy sources. Coverage of other widely used ROS2 stacks will grow in future releases.
+Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Nav2: the goal, feedback, and result types of its actions (NavigateToPose, FollowPath, ComputePathToPose, SmoothPath, Spin, BackUp, Wait) and its Costmap and SpeedLimit messages as `item def`s; its fourteen server nodes (planner, controller, behavior-tree navigator, behavior, smoother, costmap, AMCL, map server, velocity smoother, collision monitor, lifecycle manager, waypoint follower, docking, and route servers) as `part def`s carrying their topic names and action servers; and a `Nav2Stack` composite that wires them together, all checked against the Nav2 Jazzy sources. We will extend coverage to other widely used ROS2 stacks in future releases.
 
-## A series of libraries
+## Roadmap
 
-This is the first of a planned series of SysML v2 libraries for robotics. It covers architecture and implementation: the ROS2 vocabulary a robot's software architecture is written against. Two companions are planned, a library for analysis, holding the model elements for design space exploration of robot architectures, and a library for verification, holding the elements for verifying them. Each will be published on the sysand index under the same organization.
+This library is the first in a series of SysML v2 libraries for robotics that we are building. It covers architecture and implementation: the ROS2 vocabulary a robot's software architecture is written against. Two companions are in preparation, a library for analysis, with the model elements for design space exploration of robot architectures, and a library for verification, with the elements for verifying them. We will publish each on the sysand index under our organization.
 
 ## Installation
 
@@ -32,7 +32,7 @@ sysand add pkg:sysand/seil-isr/ros2-sysmlv2
 sysand add file:///path/to/ros2_sysmlv2-<version>.kpar
 ```
 
-## Quick Start
+## Quick start
 
 ```sysml
 package MyRobot {
@@ -55,7 +55,7 @@ package MyRobot {
 }
 ```
 
-## Library Structure
+## Contents
 
 | Layer | File(s) | Definitions | Description |
 |-------|---------|-------------|-------------|
@@ -69,7 +69,7 @@ package MyRobot {
 | Archetypes | `archetypes.sysml` | 8 | 8 abstract node patterns (SensorDriver, Controller, Planner, etc.) |
 | Nav2 | `nav2.sysml` | 28 | 14 Nav2 server nodes, the Nav2Stack composite, 13 action and message types |
 
-## Mapping Conventions
+## Mapping conventions
 
 | SysML v2 | ROS2 |
 |----------|------|
@@ -83,7 +83,7 @@ package MyRobot {
 | `state def` with `transition` | Lifecycle state machine |
 | `attribute def` | Parameter type |
 
-## Ground Truth
+## Validation
 
 All definitions are validated against actual ROS2 Jazzy source code:
 
@@ -100,20 +100,20 @@ All definitions are validated against actual ROS2 Jazzy source code:
 - [Syside Automator](https://docs.sensmetry.com/automator/) ≥ `0.10.1` (paid) for programmatic model access
 - Target runtime: **ROS2 Jazzy**: message, service, and action definitions follow the ROS2 Jazzy sources
 
-## Related
+## Related projects
 
 - A companion pipeline (separate project) uses Syside Automator, [Sensmetry](https://sensmetry.com)'s Python API for programmatic model access, to extract the ROS2 architecture from a SysML v2 model into a JSON intermediate representation and to generate buildable ROS2 packages, launch files, and runtime checks of the running system against the model.
 - Release history: see `CHANGELOG.md`.
 
 ## Acknowledgements
 
-[Sensmetry](https://sensmetry.com) provided a free academic license for Syside Modeler, which was used to author, validate, and visualize this library, and for the Syside Automator API behind the companion pipeline. The library is validated with `syside check` at zero errors and zero warnings.
+We thank [Sensmetry](https://sensmetry.com) for a free academic license for Syside Modeler, which we used to author, validate, and visualize this library, and for the Syside Automator API behind our companion pipeline. The library is validated with `syside check` at zero errors and zero warnings.
 
 ## License
 
 Apache-2.0
 
-## Authors
+## Maintainers
 
 Sai Sandeep Damera (sdamera@terpmail.umd.edu)
 University of Maryland, College Park
