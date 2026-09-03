@@ -40,7 +40,6 @@ extract_architecture
 architecture\.json
 run_demo
 regen_demos
-conformance[[:space:]]+monitor
 docs/
 references/
 tests/

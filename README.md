@@ -12,7 +12,7 @@ The first SysML v2 domain library for ROS2 robotics system architectures.
 
 This library is the **type vocabulary** for modeling ROS2 systems in SysML v2. You import it from your own `.sysml` models to obtain typed handles on messages, topics, services, actions, nodes, lifecycle states, QoS profiles, TF frames, and parameters that map directly to ROS2 Jazzy semantics. Every definition is validated against actual ROS2 source.
 
-This library is **not** a code generator. A companion code-generation pipeline (separate project) reads models written against this vocabulary and generates buildable ROS2 packages. If you want runnable code from your SysML model, you want that pipeline; if you want the type vocabulary alone, you want this kpar.
+This library is **not** a code generator. A companion pipeline (separate project) reads models written against this vocabulary and generates buildable ROS2 packages in Python (rclpy) and C++ (rclcpp). A manuscript preprint describing the library and the pipeline will be made available soon.
 
 ## Nav2 support
 
@@ -97,12 +97,12 @@ All definitions are validated against actual ROS2 Jazzy source code:
 
 - [Sysand](https://docs.sysand.com/client/) ≥ `0.2.1`
 - [Syside Editor](https://docs.sensmetry.com/editor/) ≥ `0.10.1` (free) for authoring with this library
-- [Syside Automator](https://docs.sensmetry.com/automator/) ≥ `0.10.1` (paid) for programmatic model access
+- [Syside Automator](https://docs.sensmetry.com/automator/) ≥ `0.10.1` (licensed, part of [Syside Modeler](https://docs.sensmetry.com/modeler/)) for programmatic model access
 - Target runtime: **ROS2 Jazzy**: message, service, and action definitions follow the ROS2 Jazzy sources
 
 ## Related projects
 
-- A companion pipeline (separate project) uses Syside Automator, [Sensmetry](https://sensmetry.com)'s Python API for programmatic model access, to extract the ROS2 architecture from a SysML v2 model into a JSON intermediate representation and to generate buildable ROS2 packages, launch files, and runtime checks of the running system against the model.
+- A companion pipeline (separate project) uses Syside Automator, [Sensmetry](https://sensmetry.com)'s Python API for programmatic model access, to extract the ROS2 architecture from a SysML v2 model into a JSON intermediate representation and to generate buildable ROS2 packages in Python (rclpy) and C++ (rclcpp), launch files, and a runtime conformance monitor that checks the running system against the model.
 - Release history: see `CHANGELOG.md`.
 
 ## Acknowledgements
