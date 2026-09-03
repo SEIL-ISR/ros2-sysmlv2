@@ -90,12 +90,12 @@ All definitions are validated against actual ROS2 Jazzy source code:
 
 ## Related
 
-- A companion pipeline (separate project) uses Syside Automator, Sensmetry's Python API for programmatic model access, to extract the ROS2 architecture from a SysML v2 model into a JSON intermediate representation and to generate buildable ROS2 packages, launch files, and runtime checks of the running system against the model.
+- A companion pipeline (separate project) uses Syside Automator, [Sensmetry](https://sensmetry.com)'s Python API for programmatic model access, to extract the ROS2 architecture from a SysML v2 model into a JSON intermediate representation and to generate buildable ROS2 packages, launch files, and runtime checks of the running system against the model.
 - Release history: see `CHANGELOG.md`.
 
 ## Acknowledgements
 
-Sensmetry provided a free academic license for Syside Modeler, which was used to author, validate, and visualize this library, and for the Syside Automator API behind the companion pipeline. The library is validated with `syside check` at zero errors and zero warnings.
+[Sensmetry](https://sensmetry.com) provided a free academic license for Syside Modeler, which was used to author, validate, and visualize this library, and for the Syside Automator API behind the companion pipeline. The library is validated with `syside check` at zero errors and zero warnings.
 
 ## License
 
