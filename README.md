@@ -25,7 +25,7 @@ This is the first of a planned series of SysML v2 libraries for robotics from th
 sysand add pkg:sysand/seil-isr/ros2-sysmlv2
 
 # From a local archive built with `sysand build`
-sysand add file:///path/to/ros2-sysmlv2-<version>.kpar
+sysand add file:///path/to/ros2_sysmlv2-<version>.kpar
 ```
 
 ## Quick Start
