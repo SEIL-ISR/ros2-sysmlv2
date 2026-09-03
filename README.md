@@ -6,13 +6,17 @@
 
 The first SysML v2 domain library for ROS2 robotics system architectures.
 
-**179 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
+**182 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
 
 ## What this library is, and is not
 
 This library is the **type vocabulary** for modeling ROS2 systems in SysML v2. You import it from your own `.sysml` models to obtain typed handles on messages, topics, services, actions, nodes, lifecycle states, QoS profiles, TF frames, and parameters that map directly to ROS2 Jazzy semantics. Every definition is validated against actual ROS2 source.
 
 This library is **not** a code generator. A companion code-generation pipeline (separate project) reads models written against this vocabulary and generates buildable ROS2 packages. If you want runnable code from your SysML model, you want that pipeline; if you want the type vocabulary alone, you want this kpar.
+
+## Stack coverage
+
+Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Nav2: the goal, feedback, and result types of its actions (NavigateToPose, FollowPath, ComputePathToPose, SmoothPath, Spin, BackUp, Wait) and its Costmap and SpeedLimit messages as `item def`s; its fourteen server nodes (planner, controller, behavior-tree navigator, behavior, smoother, costmap, AMCL, map server, velocity smoother, collision monitor, lifecycle manager, waypoint follower, docking, and route servers) as `part def`s carrying their topic names and action servers; and a `Nav2Stack` composite that wires them together, all checked against the Nav2 Jazzy sources. Coverage of other widely used ROS2 stacks will grow in future releases.
 
 ## A series of libraries
 
@@ -56,14 +60,14 @@ package MyRobot {
 | Layer | File(s) | Definitions | Description |
 |-------|---------|-------------|-------------|
 | Foundation | `foundation.sysml`, `std_msgs.sysml` | 10 | Time, Duration, Header, ColorRGBA, etc. |
-| Messages | `geometry_msgs.sysml`, `sensor_msgs.sysml`, `nav_msgs.sysml`, `trajectory_msgs.sysml`, `diagnostic_msgs.sysml`, `shape_msgs.sysml`, `action_msgs.sysml`, `visualization_msgs.sysml` | 100 | 85 ROS2 message types as `item def` |
+| Messages | `geometry_msgs.sysml`, `sensor_msgs.sysml`, `nav_msgs.sysml`, `trajectory_msgs.sysml`, `diagnostic_msgs.sysml`, `shape_msgs.sysml`, `action_msgs.sysml`, `visualization_msgs.sysml` | 87 | 85 ROS2 message types as `item def` |
 | Communication | `comm.sysml` | 16 | QoS, TopicPublisher/Subscriber, ServiceServer/Client, ActionServer/Client, connections |
-| Lifecycle | `lifecycle.sysml` | 14 | Node, LifecycleNode, LifecycleStates (5 states, 9 event-triggered transitions) |
-| Deployment | `deployment.sysml` | 5 | Executor, Container, CallbackGroup, NodeDeployment |
+| Lifecycle | `lifecycle.sysml` | 15 | Node, LifecycleNode, LifecycleStates (5 states, 9 event-triggered transitions) |
+| Deployment | `deployment.sysml` | 6 | Executor, Container, CallbackGroup, NodeDeployment |
 | Parameters | `params.sysml` | 5 | ParameterTypeKind (10 values), ParameterDescriptor, ranges |
 | TF2 | `tf2.sysml` | 7 | CoordinateFrame, StaticTransform, DynamicTransform, REP 105 frames |
 | Archetypes | `archetypes.sysml` | 8 | 8 abstract node patterns (SensorDriver, Controller, Planner, etc.) |
-| Nav2 | `nav2.sysml` | 14 | 11 Nav2 server nodes, Nav2Stack composite, 13 action/message types |
+| Nav2 | `nav2.sysml` | 28 | 14 Nav2 server nodes, the Nav2Stack composite, 13 action and message types |
 
 ## Mapping Conventions
 
