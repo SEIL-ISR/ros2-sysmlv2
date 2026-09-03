@@ -1,4 +1,4 @@
-package ros2_sysmlv2_shape_msgs {
+library package ros2_sysmlv2_shape_msgs {
     doc
     /* Geometric shape primitives for collision checking and planning.
 

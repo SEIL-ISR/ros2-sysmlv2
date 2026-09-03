@@ -1,4 +1,4 @@
-package ros2_sysmlv2_diagnostic_msgs {
+library package ros2_sysmlv2_diagnostic_msgs {
     doc
     /* Diagnostic message types for robot health monitoring.
 

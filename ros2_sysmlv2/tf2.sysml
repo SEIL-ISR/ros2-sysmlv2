@@ -1,4 +1,4 @@
-package ros2_sysmlv2_tf2 {
+library package ros2_sysmlv2_tf2 {
     doc
     /* ROS2 TF2 coordinate frame system: frames, transforms, and REP 105.
 

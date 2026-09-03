@@ -1,4 +1,4 @@
-package ros2_sysmlv2_nav_msgs {
+library package ros2_sysmlv2_nav_msgs {
     doc
     /* Navigation message types for ROS2.
 

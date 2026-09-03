@@ -1,4 +1,4 @@
-package ros2_sysmlv2_std_msgs {
+library package ros2_sysmlv2_std_msgs {
     doc
     /* Standard messages for ROS2.
 

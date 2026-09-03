@@ -1,4 +1,4 @@
-package ros2_sysmlv2_params {
+library package ros2_sysmlv2_params {
     doc
     /* ROS2 parameter system: types, descriptors, ranges, and declarations.
 

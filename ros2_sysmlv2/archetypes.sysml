@@ -1,4 +1,4 @@
-package ros2_sysmlv2_archetypes {
+library package ros2_sysmlv2_archetypes {
     doc
     /* Abstract node archetypes for common ROS2 architectural patterns.
 

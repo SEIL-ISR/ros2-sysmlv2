@@ -1,4 +1,4 @@
-package ros2_sysmlv2_geometry_msgs {
+library package ros2_sysmlv2_geometry_msgs {
     doc
     /* Geometric primitive types and common spatial data structures.
 

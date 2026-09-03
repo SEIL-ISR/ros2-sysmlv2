@@ -1,4 +1,4 @@
-package ros2_sysmlv2_lifecycle {
+library package ros2_sysmlv2_lifecycle {
     doc
     /* ROS2 managed lifecycle: Node, LifecycleNode, and LifecycleStates.
 

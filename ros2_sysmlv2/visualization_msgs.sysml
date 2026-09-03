@@ -1,4 +1,4 @@
-package ros2_sysmlv2_visualization_msgs {
+library package ros2_sysmlv2_visualization_msgs {
     doc
     /* Visualization message types for RViz display.
 

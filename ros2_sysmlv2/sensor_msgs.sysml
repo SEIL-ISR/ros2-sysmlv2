@@ -1,4 +1,4 @@
-package ros2_sysmlv2_sensor_msgs {
+library package ros2_sysmlv2_sensor_msgs {
     doc
     /* Sensor data message types for ROS2.
 

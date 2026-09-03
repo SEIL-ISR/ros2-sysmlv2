@@ -1,4 +1,4 @@
-package ros2_sysmlv2_action_msgs {
+library package ros2_sysmlv2_action_msgs {
     doc
     /* Action infrastructure message types.
 

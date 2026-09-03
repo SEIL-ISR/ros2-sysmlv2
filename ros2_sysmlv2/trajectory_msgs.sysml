@@ -1,4 +1,4 @@
-package ros2_sysmlv2_trajectory_msgs {
+library package ros2_sysmlv2_trajectory_msgs {
     doc
     /* Joint and multi-DOF trajectory types for robot motion control.
 

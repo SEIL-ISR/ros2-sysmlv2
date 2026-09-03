@@ -1,4 +1,4 @@
-package ros2_sysmlv2_comm {
+library package ros2_sysmlv2_comm {
     doc
     /* ROS2 communication patterns, QoS policies, and connection types.
 

@@ -1,4 +1,4 @@
-package ros2_sysmlv2_foundation {
+library package ros2_sysmlv2_foundation {
     doc
     /* Foundation layer for the ROS2-SysMLv2 domain library.
 

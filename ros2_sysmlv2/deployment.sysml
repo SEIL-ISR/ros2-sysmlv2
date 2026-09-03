@@ -1,4 +1,4 @@
-package ros2_sysmlv2_deployment {
+library package ros2_sysmlv2_deployment {
     doc
     /* ROS2 deployment constructs: executors, callback groups, and containers.
 

@@ -1,4 +1,4 @@
-package ros2_sysmlv2_nav2 {
+library package ros2_sysmlv2_nav2 {
     doc
     /* Nav2 (Navigation2) application framework for ROS2 Jazzy.
 
