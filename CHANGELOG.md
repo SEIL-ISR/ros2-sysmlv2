@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add `StringMessage` for `std_msgs/msg/String` and `TFMessage` for
+  `tf2_msgs/msg/TFMessage`.
+
 ## 0.1.1 (2026-09-03)
 
 - README only: definition counts taken from the model (182), a Nav2 stack-coverage section, the local archive name as `sysand build` writes it, the series note reworded, and a logo that collapses cleanly where the index page blocks external images.

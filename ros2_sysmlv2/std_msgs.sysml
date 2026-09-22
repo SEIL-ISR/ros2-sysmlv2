@@ -5,10 +5,9 @@ library package ros2_sysmlv2_std_msgs {
        Maps to: std_msgs package from ros2/common_interfaces.
        Provides basic data types used across the ROS2 ecosystem.
 
-       Note: Primitive wrapper messages (Bool, Int8, Float32, etc.)
-       are deliberately omitted: SysML v2 has native scalar types
-       in ScalarValues (Boolean, Integer, Real, String) that serve
-       the same purpose. */
+       Most primitive wrapper messages are omitted because SysML v2 has
+       native scalar types in ScalarValues. StringMessage is retained for
+       architectures that use the legacy std_msgs/msg/String wire type. */
 
     private import ScalarValues::*;
     private import ros2_sysmlv2_foundation::*;
@@ -36,6 +35,17 @@ library package ros2_sysmlv2_std_msgs {
         doc /* Empty message type. Used for topics/services that carry
                no payload: the message arrival itself is the signal.
                Maps to std_msgs/msg/Empty. */
+    }
+
+    // ===============================================================
+    // String wrapper
+    // Maps to: std_msgs/msg/String
+    // ===============================================================
+
+    item def StringMessage {
+        doc /* String wrapper message. The SysML name avoids collision with
+               ScalarValues::String. Maps to std_msgs/msg/String. */
+        attribute data : String;
     }
 
     // ===============================================================

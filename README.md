@@ -6,7 +6,7 @@
 
 The first SysML v2 domain library for ROS2 robotics system architectures.
 
-**182 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
+**184 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
 
 ## Overview
 
@@ -59,13 +59,13 @@ package MyRobot {
 
 | Layer | File(s) | Definitions | Description |
 |-------|---------|-------------|-------------|
-| Foundation | `foundation.sysml`, `std_msgs.sysml` | 10 | Time, Duration, Header, ColorRGBA, etc. |
+| Foundation | `foundation.sysml`, `std_msgs.sysml` | 11 | Time, Duration, Header, StringMessage, ColorRGBA, etc. |
 | Messages | `geometry_msgs.sysml`, `sensor_msgs.sysml`, `nav_msgs.sysml`, `trajectory_msgs.sysml`, `diagnostic_msgs.sysml`, `shape_msgs.sysml`, `action_msgs.sysml`, `visualization_msgs.sysml` | 87 | 85 ROS2 message types as `item def` |
 | Communication | `comm.sysml` | 16 | QoS, TopicPublisher/Subscriber, ServiceServer/Client, ActionServer/Client, connections |
 | Lifecycle | `lifecycle.sysml` | 15 | Node, LifecycleNode, LifecycleStates (5 states, 9 event-triggered transitions) |
 | Deployment | `deployment.sysml` | 6 | Executor, Container, CallbackGroup, NodeDeployment |
 | Parameters | `params.sysml` | 5 | ParameterTypeKind (10 values), ParameterDescriptor, ranges |
-| TF2 | `tf2.sysml` | 7 | CoordinateFrame, StaticTransform, DynamicTransform, REP 105 frames |
+| TF2 | `tf2.sysml` | 8 | TFMessage, CoordinateFrame, StaticTransform, DynamicTransform, REP 105 frames |
 | Archetypes | `archetypes.sysml` | 8 | 8 abstract node patterns (SensorDriver, Controller, Planner, etc.) |
 | Nav2 | `nav2.sysml` | 28 | 14 Nav2 server nodes, the Nav2Stack composite, 13 action and message types |
 

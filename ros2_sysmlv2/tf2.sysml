@@ -26,6 +26,17 @@ library package ros2_sysmlv2_tf2 {
     private import ros2_sysmlv2_comm::*;
 
     // ===============================================================
+    // TF message
+    // Maps to: tf2_msgs/msg/TFMessage
+    // ===============================================================
+
+    item def TFMessage {
+        doc /* Batch of stamped transforms carried on /tf and /tf_static.
+               Maps to tf2_msgs/msg/TFMessage. */
+        item transforms : TransformStamped[0..*];
+    }
+
+    // ===============================================================
     // Coordinate frame definition
     // ===============================================================
 
