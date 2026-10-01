@@ -50,6 +50,6 @@ library package ros2_sysmlv2_action_msgs {
     item def GoalStatusArray {
         doc /* Array of goal statuses, published by action servers.
                Maps to action_msgs/msg/GoalStatusArray. */
-        item statusList : GoalStatus[0..*];
+        item statusList : GoalStatus[0..*] ordered;
     }
 }

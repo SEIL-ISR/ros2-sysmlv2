@@ -62,7 +62,7 @@ package MyRobot {
 | Foundation | `foundation.sysml`, `std_msgs.sysml` | 11 | Time, Duration, Header, StringMessage, ColorRGBA, etc. |
 | Messages | `geometry_msgs.sysml`, `sensor_msgs.sysml`, `nav_msgs.sysml`, `trajectory_msgs.sysml`, `diagnostic_msgs.sysml`, `shape_msgs.sysml`, `action_msgs.sysml`, `visualization_msgs.sysml` | 87 | 85 ROS2 message types as `item def` |
 | Communication | `comm.sysml` | 16 | QoS, TopicPublisher/Subscriber, ServiceServer/Client, ActionServer/Client, connections |
-| Lifecycle | `lifecycle.sysml` | 15 | Node, LifecycleNode, LifecycleStates (5 states, 9 event-triggered transitions) |
+| Lifecycle | `lifecycle.sysml` | 15 | Node, LifecycleNode, LifecycleStates (10 states, 25 transitions: 7 requested, 18 guarded on the callback result) |
 | Deployment | `deployment.sysml` | 6 | Executor, Container, CallbackGroup, NodeDeployment |
 | Parameters | `params.sysml` | 5 | ParameterTypeKind (10 values), ParameterDescriptor, ranges |
 | TF2 | `tf2.sysml` | 8 | TFMessage, CoordinateFrame, StaticTransform, DynamicTransform, REP 105 frames |
@@ -89,7 +89,7 @@ All definitions are validated against actual ROS2 Jazzy source code:
 
 - **Message types**: field-by-field against `.msg` files from `ros2/common_interfaces` and `ros2/rcl_interfaces`
 - **Communication**: against `rclpy/qos.py`, `rclpy/node.py`, `rmw/qos_profiles.h`
-- **Lifecycle**: against `lifecycle_msgs/msg/State.msg`, `Transition.msg`, `rclpy/lifecycle/node.py`
+- **Lifecycle**: against `lifecycle_msgs/msg/State.msg`, `Transition.msg`, `rcl_lifecycle/src/default_state_machine.c`, `rclpy/lifecycle/node.py`
 - **Parameters**: against `rcl_interfaces/msg/ParameterDescriptor.msg`, `ParameterType.msg`
 - **Nav2 nodes**: against Nav2 Jazzy server node C++ source (class inheritance, topic names, action servers)
 

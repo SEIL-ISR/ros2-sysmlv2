@@ -23,8 +23,8 @@ library package ros2_sysmlv2_shape_msgs {
     item def Mesh {
         doc /* A triangle mesh defined by vertices and triangle indices.
                Maps to shape_msgs/msg/Mesh. */
-        item triangles : MeshTriangle[0..*];
-        item vertices : Point[0..*];
+        item triangles : MeshTriangle[0..*] ordered;
+        item vertices : Point[0..*] ordered;
     }
 
     // ===============================================================

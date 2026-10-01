@@ -43,13 +43,13 @@ library package ros2_sysmlv2_diagnostic_msgs {
         attribute name : String;
         attribute diagnosticMessage : String;
         attribute hardwareId : String;
-        item values : KeyValue[0..*];
+        item values : KeyValue[0..*] ordered;
     }
 
     item def DiagnosticArray {
         doc /* Timestamped array of diagnostic statuses.
                Maps to diagnostic_msgs/msg/DiagnosticArray. */
         item header : Header;
-        item status : DiagnosticStatus[0..*];
+        item status : DiagnosticStatus[0..*] ordered;
     }
 }

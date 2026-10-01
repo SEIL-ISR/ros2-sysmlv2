@@ -41,7 +41,7 @@ library package ros2_sysmlv2_nav_msgs {
         item header : Header;
         attribute cellWidth : Real;
         attribute cellHeight : Real;
-        item cells : Point[0..*];
+        item cells : Point[0..*] ordered;
     }
 
     // ===============================================================
@@ -68,14 +68,14 @@ library package ros2_sysmlv2_nav_msgs {
                Maps to nav_msgs/msg/Path.
                Used by Nav2 planner server output. */
         item header : Header;
-        item poses : PoseStamped[0..*];
+        item poses : PoseStamped[0..*] ordered;
     }
 
     item def Goals {
         doc /* Ordered list of goal poses.
                Maps to nav_msgs/msg/Goals. */
         item header : Header;
-        item goals : PoseStamped[0..*];
+        item goals : PoseStamped[0..*] ordered;
     }
 
     item def TrajectoryPoint {
@@ -92,6 +92,6 @@ library package ros2_sysmlv2_nav_msgs {
         doc /* Ordered list of trajectory points with full dynamics.
                Maps to nav_msgs/msg/Trajectory. */
         item header : Header;
-        item points : TrajectoryPoint[0..*];
+        item points : TrajectoryPoint[0..*] ordered;
     }
 }

@@ -64,7 +64,7 @@ library package ros2_sysmlv2_std_msgs {
     item def MultiArrayLayout {
         doc /* Layout descriptor for multi-dimensional arrays.
                Maps to std_msgs/msg/MultiArrayLayout. */
-        item dim : MultiArrayDimension[0..*];
+        item dim : MultiArrayDimension[0..*] ordered;
         attribute dataOffset : Integer;
     }
 }

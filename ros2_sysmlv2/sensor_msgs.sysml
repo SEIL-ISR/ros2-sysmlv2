@@ -74,7 +74,7 @@ library package ros2_sysmlv2_sensor_msgs {
         item header : Header;
         attribute height : Integer;
         attribute width : Integer;
-        item fields : PointField[0..*];
+        item fields : PointField[0..*] ordered;
         attribute isBigendian : Boolean;
         attribute pointStep : Integer;
         attribute rowStep : Integer;
@@ -139,16 +139,16 @@ library package ros2_sysmlv2_sensor_msgs {
         attribute scanTime : Real;
         attribute rangeMin : Real;
         attribute rangeMax : Real;
-        item ranges : LaserEcho[0..*];
-        item intensities : LaserEcho[0..*];
+        item ranges : LaserEcho[0..*] ordered;
+        item intensities : LaserEcho[0..*] ordered;
     }
 
     item def PointCloud {
         doc /* Legacy point cloud (prefer PointCloud2).
                Maps to sensor_msgs/msg/PointCloud. */
         item header : Header;
-        item points : Point32[0..*];
-        item channels : ChannelFloat32[0..*];
+        item points : Point32[0..*] ordered;
+        item channels : ChannelFloat32[0..*] ordered;
     }
 
     item def ChannelFloat32 {
@@ -218,9 +218,9 @@ library package ros2_sysmlv2_sensor_msgs {
                Maps to sensor_msgs/msg/MultiDOFJointState. */
         item header : Header;
         attribute jointNames : String[0..*] ordered nonunique;
-        item transforms : Transform[0..*];
-        item twist : Twist[0..*];
-        item wrench : Wrench[0..*];
+        item transforms : Transform[0..*] ordered;
+        item twist : Twist[0..*] ordered;
+        item wrench : Wrench[0..*] ordered;
     }
 
     item def BatteryState {
@@ -315,6 +315,6 @@ library package ros2_sysmlv2_sensor_msgs {
     item def JoyFeedbackArray {
         doc /* Array of joystick feedback commands.
                Maps to sensor_msgs/msg/JoyFeedbackArray. */
-        item array : JoyFeedback[0..*];
+        item array : JoyFeedback[0..*] ordered;
     }
 }

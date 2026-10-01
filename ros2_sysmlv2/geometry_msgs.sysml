@@ -243,7 +243,7 @@ library package ros2_sysmlv2_geometry_msgs {
     item def Polygon {
         doc /* Ordered list of Point32 forming a polygon.
                Maps to geometry_msgs/msg/Polygon. */
-        item points : Point32[0..*];
+        item points : Point32[0..*] ordered;
     }
 
     item def PolygonStamped {
@@ -270,6 +270,6 @@ library package ros2_sysmlv2_geometry_msgs {
         doc /* Array of poses. Used for particle clouds, path candidates.
                Maps to geometry_msgs/msg/PoseArray. */
         item header : Header;
-        item poses : Pose[0..*];
+        item poses : Pose[0..*] ordered;
     }
 }

@@ -33,7 +33,7 @@ library package ros2_sysmlv2_tf2 {
     item def TFMessage {
         doc /* Batch of stamped transforms carried on /tf and /tf_static.
                Maps to tf2_msgs/msg/TFMessage. */
-        item transforms : TransformStamped[0..*];
+        item transforms : TransformStamped[0..*] ordered;
     }
 
     // ===============================================================

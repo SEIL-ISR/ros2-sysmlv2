@@ -31,7 +31,7 @@ library package ros2_sysmlv2_trajectory_msgs {
                Maps to trajectory_msgs/msg/JointTrajectory. */
         item header : Header;
         attribute jointNames : String[0..*] ordered nonunique;
-        item points : JointTrajectoryPoint[0..*];
+        item points : JointTrajectoryPoint[0..*] ordered;
     }
 
     // ===============================================================
@@ -41,9 +41,9 @@ library package ros2_sysmlv2_trajectory_msgs {
     item def MultiDOFJointTrajectoryPoint {
         doc /* A single point on a multi-DOF (Cartesian) trajectory.
                Maps to trajectory_msgs/msg/MultiDOFJointTrajectoryPoint. */
-        item transforms : Transform[0..*];
-        item velocities : Twist[0..*];
-        item accelerations : Twist[0..*];
+        item transforms : Transform[0..*] ordered;
+        item velocities : Twist[0..*] ordered;
+        item accelerations : Twist[0..*] ordered;
         item timeFromStart : Duration;
     }
 
@@ -52,6 +52,6 @@ library package ros2_sysmlv2_trajectory_msgs {
                Maps to trajectory_msgs/msg/MultiDOFJointTrajectory. */
         item header : Header;
         attribute jointNames : String[0..*] ordered nonunique;
-        item points : MultiDOFJointTrajectoryPoint[0..*];
+        item points : MultiDOFJointTrajectoryPoint[0..*] ordered;
     }
 }

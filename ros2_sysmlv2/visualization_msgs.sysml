@@ -55,11 +55,11 @@ library package ros2_sysmlv2_visualization_msgs {
         item color : ColorRGBA;
         item lifetime : Duration;
         attribute frameLocked : Boolean;
-        item points : Point[0..*];
-        item colors : ColorRGBA[0..*];
+        item points : Point[0..*] ordered;
+        item colors : ColorRGBA[0..*] ordered;
         attribute textureResource : String;
         item texture : CompressedImage;
-        item uvCoordinates : UVCoordinate[0..*];
+        item uvCoordinates : UVCoordinate[0..*] ordered;
         attribute text : String;
         attribute meshResource : String;
         item meshFile : MeshFile;
@@ -69,6 +69,6 @@ library package ros2_sysmlv2_visualization_msgs {
     item def MarkerArray {
         doc /* An array of markers for batch display in RViz.
                Maps to visualization_msgs/msg/MarkerArray. */
-        item markers : Marker[0..*];
+        item markers : Marker[0..*] ordered;
     }
 }
