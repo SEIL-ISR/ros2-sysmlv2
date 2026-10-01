@@ -56,7 +56,7 @@ library package ros2_sysmlv2_foundation {
                Order: (x, y, z, rotation about x, rotation about y,
                rotation about z).
                Used by PoseWithCovariance, TwistWithCovariance, etc. */
-        attribute values : Real[36];
+        attribute values : Real[36] ordered nonunique;
     }
 
     // ===============================================================

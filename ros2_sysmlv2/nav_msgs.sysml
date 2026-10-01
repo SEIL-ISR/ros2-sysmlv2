@@ -32,7 +32,7 @@ library package ros2_sysmlv2_nav_msgs {
                Maps to nav_msgs/msg/OccupancyGrid. */
         item header : Header;
         item info : MapMetaData;
-        attribute data : Integer[0..*];
+        attribute data : Integer[0..*] ordered nonunique;
     }
 
     item def GridCells {

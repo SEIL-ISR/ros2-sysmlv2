@@ -139,7 +139,7 @@ library package ros2_sysmlv2_nav2 {
         attribute metadataResolution : Real;
         attribute metadataWidth : Integer;
         attribute metadataHeight : Integer;
-        attribute data : Integer[0..*];
+        attribute data : Integer[0..*] ordered nonunique;
     }
 
     item def SpeedLimit {

@@ -77,6 +77,9 @@ library package ros2_sysmlv2_params {
         doc /* Describes a node parameter: its name, type, documentation,
                mutability, and value constraints.
                Maps to rcl_interfaces/msg/ParameterDescriptor.msg.
+               floatingPointRange and integerRange are optional, [0..1],
+               matching the FloatingPointRange[<=1] and IntegerRange[<=1]
+               sequences of the message.
 
                Usage in a node definition:
                  attribute maxSpeed : ParameterDescriptor {
@@ -92,8 +95,8 @@ library package ros2_sysmlv2_params {
         attribute additionalConstraints : String;
         attribute readOnly : Boolean;
         attribute dynamicTyping : Boolean;
-        attribute floatingPointRange : FloatingPointRange;
-        attribute integerRange : IntegerRange;
+        attribute floatingPointRange : FloatingPointRange[0..1];
+        attribute integerRange : IntegerRange[0..1];
     }
 
     // ===============================================================

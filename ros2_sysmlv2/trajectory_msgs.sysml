@@ -19,10 +19,10 @@ library package ros2_sysmlv2_trajectory_msgs {
     item def JointTrajectoryPoint {
         doc /* A single point on a joint-space trajectory.
                Maps to trajectory_msgs/msg/JointTrajectoryPoint. */
-        attribute positions : Real[0..*];
-        attribute velocities : Real[0..*];
-        attribute accelerations : Real[0..*];
-        attribute effort : Real[0..*];
+        attribute positions : Real[0..*] ordered nonunique;
+        attribute velocities : Real[0..*] ordered nonunique;
+        attribute accelerations : Real[0..*] ordered nonunique;
+        attribute effort : Real[0..*] ordered nonunique;
         item timeFromStart : Duration;
     }
 
@@ -30,7 +30,7 @@ library package ros2_sysmlv2_trajectory_msgs {
         doc /* An ordered sequence of joint-space trajectory points.
                Maps to trajectory_msgs/msg/JointTrajectory. */
         item header : Header;
-        attribute jointNames : String[0..*];
+        attribute jointNames : String[0..*] ordered nonunique;
         item points : JointTrajectoryPoint[0..*];
     }
 
@@ -51,7 +51,7 @@ library package ros2_sysmlv2_trajectory_msgs {
         doc /* An ordered sequence of multi-DOF trajectory points.
                Maps to trajectory_msgs/msg/MultiDOFJointTrajectory. */
         item header : Header;
-        attribute jointNames : String[0..*];
+        attribute jointNames : String[0..*] ordered nonunique;
         item points : MultiDOFJointTrajectoryPoint[0..*];
     }
 }

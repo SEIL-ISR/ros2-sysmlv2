@@ -17,7 +17,7 @@ library package ros2_sysmlv2_shape_msgs {
     item def MeshTriangle {
         doc /* A triangle defined by 3 vertex indices into a vertex array.
                Maps to shape_msgs/msg/MeshTriangle. */
-        attribute vertexIndices : Integer[3];
+        attribute vertexIndices : Integer[3] ordered nonunique;
     }
 
     item def Mesh {
@@ -35,7 +35,7 @@ library package ros2_sysmlv2_shape_msgs {
         doc /* An infinite plane defined by ax + by + cz + d = 0.
                Maps to shape_msgs/msg/Plane.
                coef[4] = [a, b, c, d]. */
-        attribute coef : Real[4];
+        attribute coef : Real[4] ordered nonunique;
     }
 
     item def SolidPrimitive {
@@ -44,7 +44,7 @@ library package ros2_sysmlv2_shape_msgs {
                Type discriminator selects the shape; dimensions array
                holds shape-specific parameters. */
         attribute primitiveType : Integer;
-        attribute dimensions : Real[0..3];
+        attribute dimensions : Real[0..3] ordered nonunique;
         item polygon : Polygon;
     }
 }

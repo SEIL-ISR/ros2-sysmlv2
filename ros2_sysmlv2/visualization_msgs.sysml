@@ -33,7 +33,7 @@ library package ros2_sysmlv2_visualization_msgs {
         doc /* A mesh loaded from a file (e.g., STL, DAE).
                Maps to visualization_msgs/msg/MeshFile. */
         attribute filename : String;
-        attribute data : Integer[0..*];
+        attribute data : Integer[0..*] ordered nonunique;
     }
 
     // ===============================================================
