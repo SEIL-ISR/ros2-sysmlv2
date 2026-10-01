@@ -4,6 +4,21 @@
 
 - Add `StringMessage` for `std_msgs/msg/String` and `TFMessage` for
   `tf2_msgs/msg/TFMessage`.
+- Array fields declare their ordering. Arrays of primitive values, such as
+  `LaserScan.ranges`, are `ordered nonunique`, so a list may repeat a value.
+  Arrays of structured messages, such as `Path.poses`, are `ordered`.
+- `ParameterDescriptor.floatingPointRange` and `integerRange` are optional
+  (`[0..1]`), as in `rcl_interfaces/msg/ParameterDescriptor`.
+- `LifecycleStates` follows the `rcl` default state machine: the four primary
+  states, the six transition states, and 25 transitions. Seven are requested
+  by events. Eighteen leave a transition state on the result of its callback,
+  the new `TransitionCallbackReturn` (`Success`, `Failure`, `Error`). The six
+  callback action definitions gain an `out` attribute `result`.
+- Changes that affect models written against 0.1.1: the callbacks are entry
+  actions of the transition states (`configuring`, `activating`, and so on)
+  instead of the primary states; `ErrorEvent` is removed; the exits of
+  `errorProcessing` are named `onErrorSuccess`, `onErrorFailure`, and
+  `onErrorError` (before: `errorRecoverySuccess`, `errorRecoveryFailure`).
 
 ## 0.1.1 (2026-09-03)
 
