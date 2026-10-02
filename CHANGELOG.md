@@ -38,6 +38,24 @@
   `costmapMetadata.sizeY`. A usage of `QoSCompatible` now has a value, so a
   publisher and subscriber pair that the rule calls incompatible evaluates to
   false.
+- `TopicConnection`, `ServiceBinding`, and `ActionBinding` are interface
+  definitions, the SysML v2 construct for a connection whose ends are ports.
+  Their names and ends are unchanged, and no constraint was added. A usage may
+  be written with the keyword `connection` or `interface`. `StaticTransform`
+  and `DynamicTransform` stay connection definitions, since frames are parts.
+  The doc comment of `TopicConnection` says what agreement of its two ends
+  means (same topic name after namespace resolution, same message type,
+  compatible QoS) and where each is checked; `ServiceBinding` and
+  `ActionBinding` have doc comments in the same style.
+- Breaking change for tools that read the model: the three definitions now
+  have the metaclass `InterfaceDefinition`, so a query for
+  `ConnectionDefinition` by exact metaclass no longer returns them. Model text
+  written against 0.1.1 is not affected in the cases we checked: usages with
+  either keyword, and user subtypes declared with `interface def` or
+  `connection def`, validate without change.
+- The README states that each endpoint kind has a port definition of its own,
+  that the subscriber and client definitions are not written as conjugates,
+  and that each pair has the same features with every `in` and `out` reversed.
 
 ## 0.1.1 (2026-09-03)
 
