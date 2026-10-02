@@ -323,14 +323,28 @@ library package ros2_sysmlv2_comm {
     // ===============================================================
 
     constraint def QoSCompatible {
-        doc /* Checks QoS compatibility between a publisher and subscriber.
-               Rules from rmw_qos_profile_check_compatible():
-                 - Reliable pub + BestEffort sub = compatible
-                 - BestEffort pub + Reliable sub = INCOMPATIBLE
-                 - TransientLocal pub + Volatile sub = compatible
-                 - Volatile pub + TransientLocal sub = INCOMPATIBLE
-               Maps to rmw_qos_compatibility_type_t. */
+        doc /* QoS compatibility of a publisher and a subscriber on
+               reliability and durability. A publisher must offer at least
+               what the subscriber requests, as in
+               rmw_qos_profile_check_compatible():
+                 - BestEffort pub + Reliable sub = false (incompatible)
+                 - Volatile pub + TransientLocal sub = false (incompatible)
+                 - Reliable pub + BestEffort sub = true
+                 - TransientLocal pub + Volatile sub = true
+               A policy that defers to the middleware (SystemDefault,
+               Unknown, BestAvailable) on either end gives true: the pair is
+               not known to be incompatible before the endpoints exist. rmw
+               reports system default and unknown policies as a possible
+               incompatibility (a warning), and resolves best available when
+               the endpoint is created. Deadline, liveliness, and lease
+               duration are not compared.
+               Use it as an expression, QoSCompatible(pubQoS, subQoS), or as
+               a constraint usage that binds pubQoS and subQoS. */
         in pubQoS : QoSProfile;
         in subQoS : QoSProfile;
+        not (pubQoS.reliability == ReliabilityKind::BestEffort
+             and subQoS.reliability == ReliabilityKind::Reliable)
+        and not (pubQoS.durability == DurabilityKind::Volatile
+                 and subQoS.durability == DurabilityKind::TransientLocal)
     }
 }
