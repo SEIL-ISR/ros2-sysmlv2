@@ -19,6 +19,25 @@
   instead of the primary states; `ErrorEvent` is removed; the exits of
   `errorProcessing` are named `onErrorSuccess`, `onErrorFailure`, and
   `onErrorError` (before: `errorRecoverySuccess`, `errorRecoveryFailure`).
+- Nav2 fields follow the Jazzy `nav2_msgs` sources. `SmoothPathResult` gains
+  `errorMsg`. The new `CostmapMetaData` carries all seven fields of
+  `nav2_msgs/msg/CostmapMetaData`, and `Costmap` carries it as
+  `costmapMetadata`, since the ROS2 field name `metadata` is a reserved
+  keyword.
+- `QoSCompatible` carries its rule: false for a best-effort publisher with a
+  reliable subscriber and for a volatile publisher with a transient-local
+  subscriber, true for every other pair, including policies that defer to the
+  middleware (system default, unknown, best available). Deadline and
+  liveliness are not compared.
+- The README gives the field naming rule with every renamed field, and which
+  parts (goal, result, feedback) of the seven Nav2 actions are modeled.
+- Breaking changes for models written against 0.1.1: `WaitGoal.waitTime` is
+  renamed `time`, the name of the Jazzy field. `Costmap.metadataResolution`,
+  `metadataWidth`, and `metadataHeight` are removed; their values are
+  `costmapMetadata.resolution`, `costmapMetadata.sizeX`, and
+  `costmapMetadata.sizeY`. A usage of `QoSCompatible` now has a value, so a
+  publisher and subscriber pair that the rule calls incompatible evaluates to
+  false.
 
 ## 0.1.1 (2026-09-03)
 
