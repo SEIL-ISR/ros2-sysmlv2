@@ -6,7 +6,7 @@
 
 The first SysML v2 domain library for ROS2 robotics system architectures.
 
-**184 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
+**185 definitions** across **17 source files** covering message types, communication patterns, lifecycle, deployment, TF2, parameters, node archetypes, and the Nav2 navigation stack.
 
 ## Overview
 
@@ -16,7 +16,17 @@ This library is **not** a code generator. A companion pipeline (separate project
 
 ## Nav2 support
 
-Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Nav2: the goal, feedback, and result types of its actions (NavigateToPose, FollowPath, ComputePathToPose, SmoothPath, Spin, BackUp, Wait) and its Costmap and SpeedLimit messages as `item def`s; its fourteen server nodes (planner, controller, behavior-tree navigator, behavior, smoother, costmap, AMCL, map server, velocity smoother, collision monitor, lifecycle manager, waypoint follower, docking, and route servers) as `part def`s carrying their topic names and action servers; and a `Nav2Stack` composite that wires them together, all checked against the Nav2 Jazzy sources. We will extend coverage to other widely used ROS2 stacks in future releases.
+Beyond the core ROS2 interfaces, the library ships out-of-the-box support for Nav2: the parts of seven of its actions that the server definitions use (table below) and its Costmap, CostmapMetaData, and SpeedLimit messages as `item def`s; its fourteen server nodes (planner, controller, behavior-tree navigator, behavior, smoother, costmap, AMCL, map server, velocity smoother, collision monitor, lifecycle manager, waypoint follower, docking, and route servers) as `part def`s carrying their topic names and action servers; and a `Nav2Stack` composite that wires them together, all checked against the Nav2 Jazzy sources. We will extend coverage to other widely used ROS2 stacks in future releases.
+
+| Action | Goal | Result | Feedback |
+|--------|------|--------|----------|
+| ComputePathToPose | `ComputePathToPoseGoal` | `ComputePathToPoseResult` | empty in Jazzy |
+| FollowPath | `FollowPathGoal` | not modeled | `FollowPathFeedback` |
+| NavigateToPose | `NavigateToPoseGoal` | not modeled | `NavigateToPoseFeedback` |
+| SmoothPath | `SmoothPathGoal` | `SmoothPathResult` | empty in Jazzy |
+| Spin | `SpinGoal` | not modeled | not modeled |
+| BackUp | `BackUpGoal` | not modeled | not modeled |
+| Wait | `WaitGoal` | not modeled | not modeled |
 
 ## Roadmap
 
@@ -67,7 +77,7 @@ package MyRobot {
 | Parameters | `params.sysml` | 5 | ParameterTypeKind (10 values), ParameterDescriptor, ranges |
 | TF2 | `tf2.sysml` | 8 | TFMessage, CoordinateFrame, StaticTransform, DynamicTransform, REP 105 frames |
 | Archetypes | `archetypes.sysml` | 8 | 8 abstract node patterns (SensorDriver, Controller, Planner, etc.) |
-| Nav2 | `nav2.sysml` | 28 | 14 Nav2 server nodes, the Nav2Stack composite, 13 action and message types |
+| Nav2 | `nav2.sysml` | 29 | 14 Nav2 server nodes, the Nav2Stack composite, 14 action and message types |
 
 ## Mapping conventions
 
@@ -83,6 +93,22 @@ package MyRobot {
 | `state def` with `transition` | Lifecycle state machine |
 | `attribute def` | Parameter type |
 
+## Field names
+
+A message field keeps its ROS2 name in camelCase (`frame_id` becomes `frameId`). A field whose name is a reserved SysML v2 keyword, or collides with a feature the definition inherits, is renamed. Every `item def` inherits the features `start` and `done` of `Items::Item`.
+
+| Message | ROS2 field | SysML field | Reason |
+|---------|------------|-------------|--------|
+| `diagnostic_msgs/DiagnosticStatus` | `message` | `diagnosticMessage` | reserved keyword |
+| `visualization_msgs/Marker` | `action` | `markerAction` | reserved keyword |
+| `nav2_msgs/Costmap` | `metadata` | `costmapMetadata` | reserved keyword |
+| `nav2_msgs/action/ComputePathToPose` goal | `start` | `startPose` | inherited `Items::Item::start` |
+| `visualization_msgs/Marker` | `id`, `type` | `markerId`, `markerType` | same prefix as `markerAction` |
+| `shape_msgs/SolidPrimitive` | `type` | `primitiveType` | same pattern as `markerType` |
+| `rcl_interfaces/ParameterDescriptor` | `type` | `parameterType` | same pattern as `markerType` |
+
+`std_msgs/String` is the `item def StringMessage`, since `String` is the KerML string type.
+
 ## Validation
 
 All definitions are validated against actual ROS2 Jazzy source code:
@@ -92,6 +118,7 @@ All definitions are validated against actual ROS2 Jazzy source code:
 - **Lifecycle**: against `lifecycle_msgs/msg/State.msg`, `Transition.msg`, `rcl_lifecycle/src/default_state_machine.c`, `rclpy/lifecycle/node.py`
 - **Parameters**: against `rcl_interfaces/msg/ParameterDescriptor.msg`, `ParameterType.msg`
 - **Nav2 nodes**: against Nav2 Jazzy server node C++ source (class inheritance, topic names, action servers)
+- **Nav2 action and message types**: field by field against the `nav2_msgs` `.action` and `.msg` files (names after the renames above, types, arrays)
 
 ## Requirements
 

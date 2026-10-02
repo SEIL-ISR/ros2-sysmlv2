@@ -40,7 +40,10 @@ library package ros2_sysmlv2_nav2 {
     // ---- ComputePathToPose (PlannerServer) ----
 
     item def ComputePathToPoseGoal {
-        doc /* Maps to nav2_msgs/action/ComputePathToPose goal. */
+        doc /* Maps to nav2_msgs/action/ComputePathToPose goal.
+               startPose models the field `start`: every item definition
+               inherits the feature Items::Item::start, and a field of that
+               name would shadow it. */
         item goal : PoseStamped;
         item startPose : PoseStamped;
         attribute plannerId : String;
@@ -104,6 +107,7 @@ library package ros2_sysmlv2_nav2 {
         item smoothingDuration : Duration;
         attribute wasCompleted : Boolean;
         attribute errorCode : Integer;
+        attribute errorMsg : String;
     }
 
     // ---- Spin (BehaviorServer) ----
@@ -127,18 +131,31 @@ library package ros2_sysmlv2_nav2 {
 
     item def WaitGoal {
         doc /* Maps to nav2_msgs/action/Wait goal. */
-        item waitTime : Duration;
+        item time : Duration;
     }
 
     // ---- Nav2-specific messages ----
 
+    item def CostmapMetaData {
+        doc /* Maps to nav2_msgs/msg/CostmapMetaData.
+               Load and update times, layer name, resolution in m/cell,
+               size in cells, and the pose of cell (0,0) in the map. */
+        item mapLoadTime : Time;
+        item updateTime : Time;
+        attribute layer : String;
+        attribute resolution : Real;
+        attribute sizeX : Integer;
+        attribute sizeY : Integer;
+        item origin : Pose;
+    }
+
     item def Costmap {
         doc /* Maps to nav2_msgs/msg/Costmap.
-               2D costmap with metadata and raw cell data. */
+               2D costmap with metadata and raw cell data.
+               costmapMetadata models the field `metadata`, which is a
+               reserved keyword of SysML v2. */
         item header : Header;
-        attribute metadataResolution : Real;
-        attribute metadataWidth : Integer;
-        attribute metadataHeight : Integer;
+        item costmapMetadata : CostmapMetaData;
         attribute data : Integer[0..*] ordered nonunique;
     }
 
