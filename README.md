@@ -71,7 +71,7 @@ package MyRobot {
 |-------|---------|-------------|-------------|
 | Foundation | `foundation.sysml`, `std_msgs.sysml` | 11 | Time, Duration, Header, StringMessage, ColorRGBA, etc. |
 | Messages | `geometry_msgs.sysml`, `sensor_msgs.sysml`, `nav_msgs.sysml`, `trajectory_msgs.sysml`, `diagnostic_msgs.sysml`, `shape_msgs.sysml`, `action_msgs.sysml`, `visualization_msgs.sysml` | 87 | 85 ROS2 message types as `item def` |
-| Communication | `comm.sysml` | 16 | QoS, TopicPublisher/Subscriber, ServiceServer/Client, ActionServer/Client, connections |
+| Communication | `comm.sysml` | 16 | QoS, TopicPublisher/Subscriber, ServiceServer/Client, ActionServer/Client, interfaces TopicConnection, ServiceBinding, ActionBinding |
 | Lifecycle | `lifecycle.sysml` | 15 | Node, LifecycleNode, LifecycleStates (10 states, 25 transitions: 7 requested, 18 guarded on the callback result) |
 | Deployment | `deployment.sysml` | 6 | Executor, Container, CallbackGroup, NodeDeployment |
 | Parameters | `params.sysml` | 5 | ParameterTypeKind (10 values), ParameterDescriptor, ranges |
@@ -89,9 +89,16 @@ package MyRobot {
 | `port def` with `in` + `out` items | Service or Action |
 | `part def` | Node class |
 | `part` usage | Node instance |
-| `connection` | Topic/service/action binding |
+| `interface def` (`TopicConnection`, `ServiceBinding`, `ActionBinding`) | Topic, service, or action binding between two ports |
+| `connection def` (`StaticTransform`, `DynamicTransform`) | TF2 transform between two frames |
 | `state def` with `transition` | Lifecycle state machine |
 | `attribute def` | Parameter type |
+
+Each endpoint kind has a port definition of its own, so a tool selects publishers, subscribers, servers, and clients by specialization alone. The subscriber and client definitions are not written as conjugates (`~TopicPublisher`): in KerML a conjugated port definition specializes its original, so a tool that selects by specialization would take a subscriber for a publisher. Each pair has the same features, with every `in` and `out` reversed.
+
+The three port relations are interface definitions, the SysML v2 construct for a connection whose ends are ports. A usage is written with either keyword, `connection : TopicConnection connect a.scanPub to b.scanSub;` or `interface : TopicConnection connect a.scanPub to b.scanSub;`, and a user subtype specializes it, for example `interface def ScanTopic :> TopicConnection;`. The transforms are connection definitions, since frames are parts.
+
+Each port states its own topic name, message type, and QoS profile, as a node does in its code. The two ends of a topic connection agree when they have the same topic name after namespace resolution, the same message type, and compatible QoS. `syside check` reports an end connected to a port of the wrong role, `QoSCompatible` states the QoS rule, and the doc comment of `TopicConnection` says where the companion pipeline checks the rest.
 
 ## Field names
 

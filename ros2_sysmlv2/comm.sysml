@@ -5,8 +5,8 @@ library package ros2_sysmlv2_comm {
        Defines how nodes interact: topic publish/subscribe, service
        request/response, and action goal/feedback/result patterns.
        Includes QoS policy enums, QoS profile attribute with all 9 fields,
-       7 preset profiles matching rmw/qos_profiles.h, and connection
-       definitions for wiring nodes together.
+       7 preset profiles matching rmw/qos_profiles.h, and interface
+       definitions for wiring the ports of nodes together.
 
        Ground truth sources:
          - QoS enums: rclpy/qos.py (ReliabilityPolicy, DurabilityPolicy,
@@ -293,26 +293,57 @@ library package ros2_sysmlv2_comm {
     }
 
     // ===============================================================
-    // Connection definitions (wiring between ports)
+    // Interface definitions (wiring between ports)
+    // SysML v2 7.14.1: an interface definition is a connection
+    // definition whose ends are ports. A usage may be written with the
+    // keyword connection or interface.
     // ===============================================================
 
-    connection def TopicConnection {
-        doc /* Wires a topic publisher to a subscriber on the same topic.
-               The connection implies same topic name and compatible message type. */
+    interface def TopicConnection {
+        doc /* Joins a topic publisher port to a topic subscriber port:
+               one publisher and one subscriber of one ROS2 topic.
+               Usage, in either form:
+                 connection : TopicConnection connect a.scanPub to b.scanSub;
+                 interface : TopicConnection connect a.scanPub to b.scanSub;
+               A user subtype specializes it, for example:
+                 interface def ScanTopic :> TopicConnection;
+
+               The two ends agree when they have the same topic name after
+               namespace resolution, the same message type, and compatible
+               QoS. Each port states its own values, as a node does in its
+               code. Agreement is checked outside this definition:
+                 - syside check: the pub end must be a TopicPublisher and
+                   the sub end a TopicSubscriber.
+                 - The companion pipeline's extractor stops when the two
+                   ends carry different message types, and warns when the
+                   topic names differ after namespace resolution.
+                 - Its generator warns when the QoS presets of the two ends
+                   are incompatible. QoSCompatible states that rule.
+                 - Its generated conformance monitor compares both ends on
+                   the running ROS2 graph. */
         end pub : TopicPublisher;
         end sub : TopicSubscriber;
     }
 
-    connection def ServiceBinding {
-        doc /* Binds a service client to a service server.
-               Implies same service name and compatible srv type. */
+    interface def ServiceBinding {
+        doc /* Joins a service server port to a service client port.
+               The two ends agree when they have the same service name and
+               the same request and response types. syside check requires
+               the server end to be a ServiceServer and the client end a
+               ServiceClient. The companion pipeline's extractor stops when
+               the two ends carry different request or response types. */
         end server : ServiceServer;
         end client : ServiceClient;
     }
 
-    connection def ActionBinding {
-        doc /* Binds an action client to an action server.
-               Implies same action name and compatible action type. */
+    interface def ActionBinding {
+        doc /* Joins an action server port to an action client port.
+               The two ends agree when they have the same action name and
+               the same goal, feedback, and result types. syside check
+               requires the server end to be an ActionServer and the client
+               end an ActionClient. The companion pipeline's extractor stops
+               when the two ends carry different goal, feedback, or result
+               types. */
         end server : ActionServer;
         end client : ActionClient;
     }
