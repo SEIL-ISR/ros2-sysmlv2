@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.2 (2026-10-29)
 
 - Add `StringMessage` for `std_msgs/msg/String` and `TFMessage` for
   `tf2_msgs/msg/TFMessage`.
